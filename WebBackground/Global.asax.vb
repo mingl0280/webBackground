@@ -12,5 +12,11 @@ Public Class MvcApplication
         FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters)
         RouteConfig.RegisterRoutes(RouteTable.Routes)
         BundleConfig.RegisterBundles(BundleTable.Bundles)
+
+    End Sub
+    Protected Overloads Sub Application_BeginRequest(sender As Object, e As EventArgs)
+        If (Context.Request.FilePath = "/") Then
+            Context.RewritePath("index.aspx")
+        End If
     End Sub
 End Class

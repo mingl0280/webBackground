@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Desktop</title>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/letItSnow.js"></script>
+    <link rel="stylesheet" href="css/jquery-ui.css" type="text/css" />
+    <link rel="stylesheet" href="css/general.css" type="text/css" />
+    <script type="text/javascript" src="js/tubeLight.js"></script>
+    <link rel="stylesheet" href="css/lightTube.css" type="text/css" />
+</head>
+<body>
+<div class="mainBox">
+
+    <div class="centralContainer">
+        text overlay
+    </div>
+</div>
+<div class ="tubeLighter" id="tubeLighter" data-style="0" data-opacity="10" data-flushTime = "1000" data-size="medium">
+    <div class="controls" style="display:none">
+        <button onclick="nextOpacity()" title="Next Opacity">O</button>
+        <button onclick="nextSize()" title="Next Size">S</button>
+    </div>
+    <div class="dpanel" id="dpanel"></div>
+</div>
+<div class="floatBackground" id="background"></div>
+<div id="snowspawner"></div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+        $('#snowspawner').letItSnow({
+            fall_time:10000,
+            wind: 300,
+            maxcount: 100
+        })
+    });
+
+    var _tl = $('#tubeLighter');
+    var _tlc = $('.controls');
+    var _this = _tl[0];
+    initLightTube();
+
+    function initLightTube() {
+        $(function(){
+            $('#tubeLighter').lightTube({
+                initDispStyle :_this.getAttribute('data-style'),
+                initOpacity: parseInt(_this.getAttribute('data-opacity'))/10,
+                initRandFlushTime : _this.getAttribute('data-flushTime'),
+                size: _this.getAttribute('data-size')
+            });
+        });
+    }
+    _tl.hover(function () {
+        _tlc[0].style.display='';
+        _tl[0].style.paddingTop = '0px';
+    }, function () {
+        _tlc[0].style.display = 'none';
+        _tl[0].style.paddingTop = '18px';
+    });
+
+    function nextOpacity() {
+        if (_this.getAttribute('data-opacity') == '10')
+        {
+            _this.setAttribute('data-opacity','1');
+        }else{
+            _this.setAttribute('data-opacity', parseInt(_this.getAttribute('data-opacity')) + 1);
+        }
+        initLightTube();
+    }
+    function nextSize() {
+        var sz = _this.getAttribute('data-size');
+        switch (sz)
+        {
+            case 'medium':
+                _this.setAttribute('data-size','large');
+                break;
+            case 'large':
+                _this.setAttribute('data-size','small');
+                break;
+            case 'small':
+                _this.setAttribute('data-size','medium');
+                break;
+        }
+        initLightTube();
+    }
+
+</script>

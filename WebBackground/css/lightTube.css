@@ -1,0 +1,33 @@
+.tubeLighter
+{
+    position: fixed;
+    display: inline-block;
+    overflow: hidden;
+}
+.medium
+{
+    width: 45px;
+}
+.large
+{
+    width: 55px;
+}
+.small
+{
+    width: 35px;
+}
+.controls button {
+    width: 15px;
+    height: 16px;
+    font-size: small;
+    background: transparent;
+    border: none;
+    color: white;
+    padding-left: 3px;
+    text-align: center;
+    vertical-align: top;
+}
+.controls
+{
+    text-align: left;
+}
