@@ -4,12 +4,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 	<meta charset="utf-8" />
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 </head>
 <body>
     <form action="ExecActions.aspx" method="post">
         <span>Program:</span><input type="text" name="Program"/>
         <span>Args:</span><input type="text" name="Args" />
         <input type="submit" value="Submit" />
+        <button value="Click" onclick="in"
     </form>
+    <div id="perfcounter"></div>
 </body>
 </html>
+<script type="text/javascript">
+    var s = new WebSocket("ws://localhost:20080/Api/wsCpuStat.ashx");
+    s.onmessage = function(m)
+    {
+        var val = $.parseJSON(m.data);
+        $('#perfcounter')[0].textContent = val;
+    }
+    /*
+    var i = setInterval(function () {
+        if (s.OPEN) {
+            s.send('1');
+        }
+    },500)*/
+
+</script>

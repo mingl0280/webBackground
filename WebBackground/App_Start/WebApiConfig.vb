@@ -10,13 +10,5 @@ Public Module WebApiConfig
         ' Web API 路由
         config.MapHttpAttributeRoutes()
 
-        config.Routes.MapHttpRoute(
-            name:="DefaultApi",
-            routeTemplate:="api/{controller}/{id}",
-            defaults:=New With {.id = RouteParameter.Optional}
-        )
-        config.Routes.MapHttpRoute(
-            "", "{page}", New With {.page = "index.aspx"}
-)
     End Sub
 End Module

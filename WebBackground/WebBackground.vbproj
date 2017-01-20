@@ -64,6 +64,13 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Management.Instrumentation" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.WebSockets, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.WebSockets.4.3.0\lib\net46\System.Net.WebSockets.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -203,14 +210,14 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\wsCpuStat.ashx.vb">
+      <DependentUpon>wsCpuStat.ashx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="App_Start\WebApiConfig.vb" />
-    <Compile Include="CPUStat.aspx.vb">
-      <DependentUpon>CPUStat.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="Controllers\CpuStatController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -245,6 +252,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Api\wsCpuStat.ashx" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -254,10 +262,13 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Content Include="plugins\avaliable\base.cfg" />
+    <Content Include="plugins\avaliable\letitsnow.cfg" />
+    <Content Include="plugins\avaliable\lightTube.cfg" />
+    <Content Include="plugins\enabled\base.cfg" />
+    <Content Include="plugins\enabled\letitsnow.cfg" />
+    <Content Include="plugins\enabled\lightTube.cfg" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="CPUStat.aspx">
-      <DependentUpon>CPUStat.aspx.vb</DependentUpon>
-    </Content>
     <Content Include="css\general.css" />
     <Content Include="css\jquery-ui.css" />
     <Content Include="css\lightTube.css" />
@@ -322,11 +333,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
-    <Folder Include="plugins\" />
-	<Folder Include="plugins\enabled" />
-	<Folder Include="plugins\avaliable" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
