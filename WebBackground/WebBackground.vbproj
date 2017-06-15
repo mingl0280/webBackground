@@ -213,11 +213,17 @@
     <Compile Include="Api\wsCpuStat.ashx.vb">
       <DependentUpon>wsCpuStat.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Api\wsKeyboardActivities.ashx.vb">
+      <DependentUpon>wsKeyboardActivities.ashx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\FilterConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="App_Start\WebApiConfig.vb" />
-    <Compile Include="Controllers\CpuStatController.vb" />
+    <Compile Include="ExecActions.aspx.vb">
+      <DependentUpon>ExecActions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -253,6 +259,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Api\wsCpuStat.ashx" />
+    <Content Include="Api\wsKeyboardActivities.ashx" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -262,6 +269,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <Content Include="ExecActions.aspx" />
     <Content Include="plugins\avaliable\base.cfg" />
     <Content Include="plugins\avaliable\letitsnow.cfg" />
     <Content Include="plugins\avaliable\lightTube.cfg" />
@@ -333,6 +341,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
